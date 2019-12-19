@@ -25,8 +25,5 @@ License GPL-3.0 or later (http://www.gnu.org/licenses/gpl.html)."""
 @click.version_option(version=__version__, message=__notice__)
 
 @click.pass_context
-def main():
-    print('test')
-
-if __name__ == "__main__":
-    main()
+def main(ctx):
+    print('in main')

@@ -17,7 +17,7 @@ class TestParser:
         path=os.path.join(DATA_DIR, "test1.log")
         with open(path) as file:
             result = next(_parse(file))
-            expected = {'loglevel': 'INFO', 'db': '?', 'logger': 'odoo', 'message': 'Odoo version 10.0'}
+            expected = {'levelname': 'INFO', 'db': '?', 'logger': 'odoo', 'message': 'Odoo version 10.0'}
             assert  expected == result
 
     def test_empty(self):
@@ -26,3 +26,9 @@ class TestParser:
             parser = _parse(file)
             with pytest.raises(StopIteration):
                 next(parser)
+    
+    def test_emtpy_parseFile(self):
+        path=os.path.join(DATA_DIR, "empty.log")
+        with open(path) as file:
+            parser = parseFile(file)
+            assert parser == []
