@@ -10,6 +10,12 @@ in the project home folder:
 pip install -e .
 ```
 
+if you would like to work on this project i suggest using:
+
+```
+python setup.py develop
+```
+
 ## Running the tests
 
 This project uses pytest for the testing.
