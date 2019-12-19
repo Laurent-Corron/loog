@@ -35,9 +35,9 @@ def parseFile(stream,echo=None, reg_exp = odoo_reg_exp):
     default=None,
     help="Echo the input file",
 )
-@click.argument("filename", type=click.Path(dir_okay=False), default="")
+@click.argument("filename", type=click.Path(exists=True, dir_okay=False))
 def parse(filename,echo):
-    if(type(filename)==str):
+    if type(filename)==str:
         stream = open(filename)
     parseFile(stream = stream, echo=echo)
 
