@@ -1,10 +1,10 @@
-# Copyright 2019 ACSONE SA/NV (<http://acsone.eu>)
+# Copyright 2019 ACSONE SA/NV (<https://acsone.eu/>)
 
 from setuptools import find_packages, setup
 
 setup(
     name="loog",
-    description= "an Odoo log parsing and enrichment library and CLI",
+    description= "An Odoo log parsing and enrichment library and CLI.",
     long_description="\n".join((open("README.md").read())),
     long_description_content_type='text/markdown',
     url='https://github.com/acsone/loog',
