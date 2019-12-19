@@ -1,2 +1,1 @@
-from . import main
-from . import parser
+from .parser import parse_stream

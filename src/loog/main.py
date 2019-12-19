@@ -1,10 +1,6 @@
 # Copyright 2019 ACSONE SA/NV (<https://acsone.eu/>)
 
-import logging
-
 import click
-import io
-
 from pkg_resources import DistributionNotFound, get_distribution
 
 try:
@@ -19,9 +15,9 @@ An Odoo log parsing and enrichment library and CLI.
 
 Copyright 2019 ACSONE SA/NV (<https://acsone.eu/>)"""
 
+
 @click.group()
 @click.version_option(version=__version__, message=__notice__)
-
 @click.pass_context
 def main(ctx):
     print()

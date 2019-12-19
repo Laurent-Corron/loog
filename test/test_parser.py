@@ -1,30 +1,34 @@
 # Copyright 2019 ACSONE SA/NV (<https://acsone.eu/>)
 
+import json
 import os
-import pytest
-from loog.parser import parseFile
-from loog.parser import _parse
 
-from click.testing import CliRunner
+from loog import parse_stream
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
-class TestParser:
-    def test_parse(self):
-        path=os.path.join(DATA_DIR, "test1.log")
-        with open(path) as file:
-            result = next(_parse(file))
-            expected = {'levelname': 'INFO', 'db': '?', 'logger': 'odoo', 'message': 'Odoo version 10.0'}
-            assert  expected == result
 
-    def test_empty(self):
-        path=os.path.join(DATA_DIR, "empty.log")
-        with open(path) as file:
-            parser = _parse(file)
-            with pytest.raises(StopIteration):
-                next(parser)
-    
-    def test_emtpy_parseFile(self):
-        path=os.path.join(DATA_DIR, "empty.log")
-        with open(path) as file:
-            parser = parseFile(file)
-            assert parser == []
+
+def test_empty():
+    path = os.path.join(DATA_DIR, "empty.log")
+    with open(path) as file:
+        assert list(parse_stream(file)) == []
+
+
+def test_parsing_file():
+    path = os.path.join(DATA_DIR, "test1.log")
+    with open(path) as file:
+        result = list(parse_stream(file))
+        with open(os.path.join(DATA_DIR, "test1_expected.json")) as expected_file:
+            expected = json.load(expected_file)
+        assert expected == result
+
+
+def test_parsing_irregular_lines():
+    path = os.path.join(DATA_DIR, "test1.log")
+    with open(path) as file:
+        result = list(parse_stream(file))
+        # checks that the first line is added in the first dict
+        assert "first line fo the file" in result[0]["raw"]
+        assert 1 == len(result[0])
+        # checks that the Traceback message was added to the previous line's message
+        assert "Traceback" in result[5]["message"]
