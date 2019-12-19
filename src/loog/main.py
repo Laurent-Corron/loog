@@ -26,4 +26,4 @@ License GPL-3.0 or later (http://www.gnu.org/licenses/gpl.html)."""
 
 @click.pass_context
 def main(ctx):
-    print('in main')
+    print()

@@ -18,20 +18,27 @@ def _parse(stream, reg_exp = odoo_reg_exp):
         yield result
 
 
-def parseFile(stream, reg_exp = odoo_reg_exp):
+def parseFile(stream,echo=None, reg_exp = odoo_reg_exp):
     result = []
     for line in _parse(stream, reg_exp):
         if line:
             result.append(line)
+            if echo:
+                print(line)
     return result
 
 @click.command(
     help="parses an odoo log file and returns a dict for the different part of the log"
 )
+@click.option(
+    "--echo/--no-echo",
+    default=None,
+    help="Echo the input file",
+)
 @click.argument("filename", type=click.Path(dir_okay=False), default="")
-def parse(filename):
+def parse(filename,echo):
     if(type(filename)==str):
         stream = open(filename)
-    parseFile(stream = stream)
+    parseFile(stream = stream, echo=echo)
 
 main.add_command(parse)
