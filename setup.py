@@ -4,29 +4,23 @@ from setuptools import find_packages, setup
 
 setup(
     name="loog",
-    description= "An Odoo log parsing and enrichment library and CLI.",
-    long_description="\n".join((open("README.md").read())),
-    long_description_content_type='text/markdown',
-    url='https://github.com/acsone/loog',
-    packages=find_packages(where='src'),
+    description="An Odoo log parsing and enrichment library and CLI.",
+    long_description="\n".join(open("README.md").read()),
+    long_description_content_type="text/markdown",
+    url="https://github.com/acsone/loog",
+    packages=find_packages(where="src"),
     use_scm_version=True,
     include_package_data=True,
-    install_requires=[
-        "click",
-    ],
+    install_requires=["click"],
     license="mit",
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: POSIX",
         "Programming Language :: Python :: 3.6",
     ],
-    package_dir={'': 'src'},
-    python_requires='>=3.6',
-    entry_points={
-        'console_scripts':[
-            'loog=loog.main:main',
-        ]
-    },
+    package_dir={"": "src"},
+    python_requires=">=3.6",
+    entry_points={"console_scripts": ["loog=loog.main:main"]},
 )
