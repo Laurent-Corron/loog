@@ -1,7 +1,6 @@
 import re
 from typing import Iterable, Iterator, Mapping
 
-
 ODOO_LOG_RE = re.compile(
     r"^"
     r"(?P<asctime>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) "
@@ -12,6 +11,7 @@ ODOO_LOG_RE = re.compile(
     r"(?P<message>.*)"
     r"$"
 )
+
 
 def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
     """Parse a stream of Odoo log lines and return an iterator of log records.
@@ -42,6 +42,3 @@ def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
             else:
                 # irregular lines at the beginning, yield them independently
                 yield {"raw": line}
-
-if __name__ == "__main__":
-    import sys
