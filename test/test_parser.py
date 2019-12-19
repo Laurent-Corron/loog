@@ -1,5 +1,6 @@
 # Copyright 2019 ACSONE SA/NV (<https://acsone.eu/>)
 
+import json
 import os
 
 from loog import parse_stream
@@ -27,3 +28,11 @@ class TestParser:
         path = os.path.join(DATA_DIR, "empty.log")
         with open(path) as file:
             assert list(parse_stream(file)) == []
+
+    def test_parsing_full_file(self):
+        path = os.path.join(DATA_DIR, "test1.log")
+        with open(path) as file:
+            result = list(parse_stream(file))
+            expected_file = open(os.path.join(DATA_DIR, "expected_parse_file1.json"))
+            expected = json.load(expected_file)
+            assert expected == result
