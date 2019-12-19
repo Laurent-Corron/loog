@@ -1,6 +1,6 @@
 # LOOG
 
-A log parser for Odoo.
+an Odoo log parsing and enrichment library and CLI
 
 ## Installing
 

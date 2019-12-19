@@ -1,7 +1,4 @@
-
-
-# -*- coding: utf-8 -*-
-# Copyright 2017 ACSONE SA/NV (<http://acsone.eu>)
+# Copyright 2019 ACSONE SA/NV (<http://acsone.eu>)
 
 import os
 import pytest

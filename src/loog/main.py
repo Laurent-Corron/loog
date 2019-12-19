@@ -15,9 +15,9 @@ except DistributionNotFound:
 
 __notice__ = """%(prog)s, version %(version)s
 
-A logger for Odoo.
+An Odoo log parsing and enrichment library and CLI.
 
-Copyright 2019-2020 ACSONE SA/NV (<http://acsone.eu>)"""
+Copyright 2019 ACSONE SA/NV (<http://acsone.eu>)"""
 
 @click.group()
 @click.version_option(version=__version__, message=__notice__)
