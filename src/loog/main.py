@@ -1,5 +1,4 @@
 # Copyright 2019 ACSONE SA/NV (<http://acsone.eu>)
-# License GPL-3.0 or later (http://www.gnu.org/licenses/gpl.html).
 
 import logging
 
@@ -18,8 +17,7 @@ __notice__ = """%(prog)s, version %(version)s
 
 A logger for Odoo.
 
-Copyright 2019-2020 ACSONE SA/NV (<http://acsone.eu>)
-License GPL-3.0 or later (http://www.gnu.org/licenses/gpl.html)."""
+Copyright 2019-2020 ACSONE SA/NV (<http://acsone.eu>)"""
 
 @click.group()
 @click.version_option(version=__version__, message=__notice__)

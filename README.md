@@ -33,5 +33,5 @@ See also the list of [contributors](https://github.com/Laurent-Corron/loog/contr
 
 ## License
 
-This project is licensed under the GPL v3 - see the [LICENSE](LICENSE) file for details
+This project is under the MIT license - see the [LICENSE](LICENSE) file for details
 
