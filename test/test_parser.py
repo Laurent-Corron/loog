@@ -8,31 +8,27 @@ from loog import parse_stream
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
 
-class TestParser:
-    def test_parse(self):
-        path = os.path.join(DATA_DIR, "test1.log")
-        with open(path) as file:
-            result = next(parse_stream(file))
-            expected = {
-                "asctime": "2017-05-21 14:01:49,686",
-                "pid": "8038",
-                "levelname": "INFO",
-                "dbname": "?",
-                "logger": "odoo",
-                "message": "Odoo version 10.0",
-                "raw": "2017-05-21 14:01:49,686 8038 INFO ? odoo: Odoo version 10.0\n",
-            }
-            assert expected == result
+def test_empty():
+    path = os.path.join(DATA_DIR, "empty.log")
+    with open(path) as file:
+        assert list(parse_stream(file)) == []
 
-    def test_empty(self):
-        path = os.path.join(DATA_DIR, "empty.log")
-        with open(path) as file:
-            assert list(parse_stream(file)) == []
 
-    def test_parsing_full_file(self):
-        path = os.path.join(DATA_DIR, "test1.log")
-        with open(path) as file:
-            result = list(parse_stream(file))
-            expected_file = open(os.path.join(DATA_DIR, "expected_parse_file1.json"))
+def test_parsing_file():
+    path = os.path.join(DATA_DIR, "test1.log")
+    with open(path) as file:
+        result = list(parse_stream(file))
+        with open(os.path.join(DATA_DIR, "test1_expected.json")) as expected_file:
             expected = json.load(expected_file)
-            assert expected == result
+        assert expected == result
+
+
+def test_parsing_irregular_lines():
+    path = os.path.join(DATA_DIR, "test1.log")
+    with open(path) as file:
+        result = list(parse_stream(file))
+        # checks that the first line is added in the first dict
+        assert "first line fo the file" in result[0]["raw"]
+        assert 1 == len(result[0])
+        # checks that the Traceback message was added to the previous line's message
+        assert "Traceback" in result[5]["message"]

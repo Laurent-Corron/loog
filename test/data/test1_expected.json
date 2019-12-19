@@ -1,4 +1,6 @@
 [{
+	"raw": "first line fo the file\n"
+}, {
 	"asctime": "2017-05-21 14:01:49,686",
 	"pid": "8038",
 	"levelname": "INFO",
