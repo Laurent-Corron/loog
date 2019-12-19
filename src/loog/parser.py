@@ -1,52 +1,47 @@
-import logging
 import re
-import click
+from typing import Iterable, Iterator, Mapping
 
-from .main import main
 
-_logger = logging.getLogger(__name__)
+ODOO_LOG_RE = re.compile(
+    r"^"
+    r"(?P<asctime>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) "
+    r"(?P<pid>\d+) "
+    r"(?P<levelname>\w+) "
+    r"(?P<dbname>\S+) "
+    r"(?P<logger>\S+): "
+    r"(?P<message>.*)"
+    r"$"
+)
 
-# from OCA/maintainer-quality-tools
-odoo_reg_exp = r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3} \d+ (?P<levelname>\w+) (?P<db>\S+) (?P<logger>\S+): (?P<message>.*)$"
+def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
+    """Parse a stream of Odoo log lines and return an iterator of log records.
 
-def _parse(stream, reg_exp=odoo_reg_exp):
+    Log records have the following keys:
+    - asctime: timestamp
+    - pid: process or thread id
+    - dbname: database name
+    - levelname: python logging level name
+    - message: the rest of the line
+    """
+    record = None
     for line in stream:
-        parsed = re.match(reg_exp,line)
-        result = False
-        if parsed:
-            result = parsed.groupdict()
-        yield result
+        mo = ODOO_LOG_RE.match(line)
+        if mo:
+            # we got a match, yield previous record and create a new one
+            if record:
+                yield record
+            record = mo.groupdict()
+            record["raw"] = line
+        else:
+            if record:
+                # irregular line in the middle of the log file: assume
+                # it is a continuation of the current record (a typical
+                # example is a multi-line stack trace)
+                record["message"] += "\n" + line.strip()
+                record["raw"] += line
+            else:
+                # irregular lines at the beginning, yield them independently
+                yield {"raw": line}
 
-
-def parseFile(stream,echo=None, reg_exp=odoo_reg_exp):
-    result = []
-    for line in _parse(stream, reg_exp):
-        if line:
-            result.append(line)
-            if echo:
-                print(line)
-    return result
-
-@click.command(
-    help="parses an odoo log file and returns a dict with the content of the file"
-)
-@click.option(
-    "--echo/--no-echo",
-    default=None,
-    help="Echo the input file",
-)
-@click.option(
-    "--regular_exp",
-    default=False,
-    help="Add a custom regular expression to parse the file",
-
-)
-@click.argument("filename", type=click.Path(exists=True, dir_okay=False))
-def parse(filename, regular_exp, echo):
-    if type(filename)==str:
-        stream = open(filename)
-    if not regular_exp:
-        regular_exp=odoo_reg_exp
-    parseFile(stream = stream, echo=echo, reg_exp=regular_exp)
-
-main.add_command(parse)
+if __name__ == "__main__":
+    import sys

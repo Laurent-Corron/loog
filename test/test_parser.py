@@ -2,8 +2,7 @@
 
 import os
 import pytest
-from loog.parser import parseFile
-from loog.parser import _parse
+from loog.parser import parse_stream
 
 from click.testing import CliRunner
 
@@ -12,19 +11,13 @@ class TestParser:
     def test_parse(self):
         path=os.path.join(DATA_DIR, "test1.log")
         with open(path) as file:
-            result = next(_parse(file))
-            expected = {'levelname': 'INFO', 'db': '?', 'logger': 'odoo', 'message': 'Odoo version 10.0'}
+            result = next(parse_stream(file))
+            expected = {'asctime': '2017-05-21 14:01:49,686', 'pid': '8038', 'levelname': 'INFO', 'dbname': '?', 'logger': 'odoo', 'message': 'Odoo version 10.0', 'raw': '2017-05-21 14:01:49,686 8038 INFO ? odoo: Odoo version 10.0\n'}
             assert  expected == result
 
     def test_empty(self):
         path=os.path.join(DATA_DIR, "empty.log")
         with open(path) as file:
-            parser = _parse(file)
+            parser = parse_stream(file)
             with pytest.raises(StopIteration):
                 next(parser)
-    
-    def test_emtpy_parseFile(self):
-        path=os.path.join(DATA_DIR, "empty.log")
-        with open(path) as file:
-            parser = parseFile(file)
-            assert parser == []
