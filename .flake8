@@ -9,7 +9,4 @@ select = C,E,F,W,B,B9
 # W503: line break before binary operator (black behaviour)
 ignore = E203,E501,W503
 exclude =
-  ./.git
-  ./src
-  ./venv*
-  .eggs/
+  __init__.py

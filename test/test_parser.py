@@ -2,7 +2,7 @@
 
 import os
 
-from loog.parser import parse_stream
+from loog import parse_stream
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
