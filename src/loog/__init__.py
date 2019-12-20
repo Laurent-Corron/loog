@@ -1,1 +1,1 @@
-from .parser import parse_stream
+from .parser import enrich_werkzeug, parse_stream

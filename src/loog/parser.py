@@ -42,3 +42,29 @@ def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
             else:
                 # irregular lines at the beginning, yield them independently
                 yield {"raw": line}
+
+
+ODOO_werkzeug_RE = re.compile(
+    r"^"
+    r"(?P<ip>\S*)"
+    r".*?] "
+    r"\"(?P<method>\S+) "
+    r"(?P<url>\S*) .*?\" "
+    r"(?P<response>\S*)"
+    r"( - (?P<sql_count>\S+) (?P<sql_time>\S+) (?P<python_time>\S+))?"
+    r".*$"
+)
+
+
+def enrich_werkzeug(
+    records: Iterator[Mapping[str, str]]
+) -> Iterator[Mapping[str, str]]:
+    """Enrich werkzeug (http requests) log records"""
+    for record in records:
+        if record.get("logger") == "werkzeug":
+            mo = ODOO_werkzeug_RE.match(record["message"])
+            if mo:
+                record["werkzeug"] = {
+                    k: v for k, v in mo.groupdict().items() if v is not None
+                }
+        yield record
