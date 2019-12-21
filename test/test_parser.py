@@ -48,6 +48,6 @@ def test_werkzeug():
 
         # result[2] is using oddoo 11's format
         # (without sql_count, sql_time and python_time) so checking its value
-        assert "sql_count" not in result[2]["werkzeug"].keys()
-        assert "sql_time" not in result[2]["werkzeug"].keys()
-        assert "python_time" not in result[2]["werkzeug"].keys()
+        assert "sql_count" not in result[2]
+        assert "sql_time" not in result[2]
+        assert "python_time" not in result[2]

@@ -63,7 +63,7 @@ def enrich_werkzeug(
         if record.get("logger") == "werkzeug":
             mo = ODOO_WERKZEUG_RE.match(record["message"])
             if mo:
-                record["werkzeug"] = {
-                    k: v for k, v in mo.groupdict().items() if v is not None
-                }
+                record.update(
+                    (k, v) for k, v in mo.groupdict().items() if v is not None
+                )
         yield record

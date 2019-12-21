@@ -6,13 +6,11 @@
 	"logger": "werkzeug",
 	"message": "127.0.0.1 - - [19/Dec/2019 08:42:32] \"GET /web/static/lib/bootstrap/scss/web.assets_common/_functions.scss.css HTTP/1.1\" 304 - 3 0.002 0.006",
 	"raw": "2019-12-19 08:42:32,892 19649 INFO odoo13-dev werkzeug: 127.0.0.1 - - [19/Dec/2019 08:42:32] \"GET /web/static/lib/bootstrap/scss/web.assets_common/_functions.scss.css HTTP/1.1\" 304 - 3 0.002 0.006\n",
-	"werkzeug": {
-		"remote_addr": "127.0.0.1",
-		"request_method": "GET",
-		"request_uri": "/web/static/lib/bootstrap/scss/web.assets_common/_functions.scss.css",
-		"status": "304",
-		"sql_count": "3",
-		"sql_time": "0.002",
-		"python_time": "0.006"
-	}
+	"remote_addr": "127.0.0.1",
+	"request_method": "GET",
+	"request_uri": "/web/static/lib/bootstrap/scss/web.assets_common/_functions.scss.css",
+	"status": "304",
+	"sql_count": "3",
+	"sql_time": "0.002",
+	"python_time": "0.006"
 }
