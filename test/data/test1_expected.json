@@ -1,59 +1,77 @@
-[{
-	"raw": "first line fo the file\n"
-}, {
-	"asctime": "2017-05-21 14:01:49,686",
-	"pid": "8038",
-	"levelname": "INFO",
-	"dbname": "?",
-	"logger": "odoo",
-	"message": "Odoo version 10.0",
-	"raw": "2017-05-21 14:01:49,686 8038 INFO ? odoo: Odoo version 10.0\n"
-}, {
-	"asctime": "2017-05-21 14:01:49,687",
-	"pid": "8038",
-	"levelname": "INFO",
-	"dbname": "?",
-	"logger": "odoo",
-	"message": "addons paths: [u'/home/nobody/odoo-10.0/addons', u'/home/nobody/odoo/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mail-environment/setup/mail_environment/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder/setup/mis_builder/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder-operating-unit/setup/mis_builder_operating_unit/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-server-environment-ir-config-parameter/setup/server_environment_ir_config_parameter/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/local/lib/python2.7/site-packages/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/lib/python2.7/site-packages/odoo/addons', '/home/nobody/odoo/src/odoo/odoo/addons']",
-	"raw": "2017-05-21 14:01:49,687 8038 INFO ? odoo: addons paths: [u'/home/nobody/odoo-10.0/addons', u'/home/nobody/odoo/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mail-environment/setup/mail_environment/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder/setup/mis_builder/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder-operating-unit/setup/mis_builder_operating_unit/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-server-environment-ir-config-parameter/setup/server_environment_ir_config_parameter/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/local/lib/python2.7/site-packages/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/lib/python2.7/site-packages/odoo/addons', '/home/nobody/odoo/src/odoo/odoo/addons']\n"
-}, {
-	"asctime": "2017-05-21 14:01:49,687",
-	"pid": "8038",
-	"levelname": "INFO",
-	"dbname": "?",
-	"logger": "odoo",
-	"message": "database: default@default:default",
-	"raw": "2017-05-21 14:01:49,687 8038 INFO ? odoo: database: default@default:default\n"
-}, {
-	"asctime": "2017-05-21 14:01:50,496",
-	"pid": "8038",
-	"levelname": "INFO",
-	"dbname": "?",
-	"logger": "odoo.modules.loading",
-	"message": "init db",
-	"raw": "2017-05-21 14:01:50,496 8038 INFO ? odoo.modules.loading: init db\n"
-}, {
-	"asctime": "2017-05-21 14:01:50,637",
-	"pid": "8038",
-	"levelname": "ERROR",
-	"dbname": "?",
-	"logger": "odoo.modules.registry",
-	"message": "Failed to load registry\nTraceback (most recent call last):\n...\nOSError: [Errno 2] No such file or directory: '/home/nobody/odoo-10.0/addons'",
-	"raw": "2017-05-21 14:01:50,637 8038 ERROR ? odoo.modules.registry: Failed to load registry\nTraceback (most recent call last):\n  ...\nOSError: [Errno 2] No such file or directory: '/home/nobody/odoo-10.0/addons'\n"
-}, {
-	"asctime": "2017-05-21 14:01:50,637",
-	"pid": "8038",
-	"levelname": "CRITICAL",
-	"dbname": "?",
-	"logger": "odoo.service.server",
-	"message": "Failed to initialize database `odoo-bscw-testsuite-1`.\nTraceback (most recent call last):\n...",
-	"raw": "2017-05-21 14:01:50,637 8038 CRITICAL ? odoo.service.server: Failed to initialize database `odoo-bscw-testsuite-1`.\nTraceback (most recent call last):\n  ...\n"
-}, {
-	"asctime": "2017-05-21 14:01:50,638",
-	"pid": "8038",
-	"levelname": "INFO",
-	"dbname": "?",
-	"logger": "odoo.service.server",
-	"message": "Initiating shutdown",
-	"raw": "2017-05-21 14:01:50,638 8038 INFO ? odoo.service.server: Initiating shutdown\n"
-}]
+[
+  {
+    "raw": "first line fo the file\n"
+  },
+  {
+    "asctime": "2017-05-21 14:01:49,686",
+    "pid": "8038",
+    "levelname": "INFO",
+    "dbname": "?",
+    "logger": "odoo",
+    "message": "Odoo version 10.0",
+    "raw": "2017-05-21 14:01:49,686 8038 INFO ? odoo: Odoo version 10.0\n"
+  },
+  {
+    "asctime": "2017-05-21 14:01:49,687",
+    "pid": "8038",
+    "levelname": "INFO",
+    "dbname": "?",
+    "logger": "odoo",
+    "message": "addons paths: [u'/home/nobody/odoo-10.0/addons', u'/home/nobody/odoo/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mail-environment/setup/mail_environment/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder/setup/mis_builder/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder-operating-unit/setup/mis_builder_operating_unit/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-server-environment-ir-config-parameter/setup/server_environment_ir_config_parameter/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/local/lib/python2.7/site-packages/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/lib/python2.7/site-packages/odoo/addons', '/home/nobody/odoo/src/odoo/odoo/addons']",
+    "raw": "2017-05-21 14:01:49,687 8038 INFO ? odoo: addons paths: [u'/home/nobody/odoo-10.0/addons', u'/home/nobody/odoo/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mail-environment/setup/mail_environment/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder/setup/mis_builder/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder-operating-unit/setup/mis_builder_operating_unit/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-server-environment-ir-config-parameter/setup/server_environment_ir_config_parameter/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/local/lib/python2.7/site-packages/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/lib/python2.7/site-packages/odoo/addons', '/home/nobody/odoo/src/odoo/odoo/addons']\n"
+  },
+  {
+    "asctime": "2017-05-21 14:01:49,687",
+    "pid": "8038",
+    "levelname": "INFO",
+    "dbname": "?",
+    "logger": "odoo",
+    "message": "database: default@default:default",
+    "raw": "2017-05-21 14:01:49,687 8038 INFO ? odoo: database: default@default:default\n"
+  },
+  {
+    "asctime": "2017-05-21 14:01:50,496",
+    "pid": "8038",
+    "levelname": "INFO",
+    "dbname": "?",
+    "logger": "odoo.modules.loading",
+    "message": "init db",
+    "raw": "2017-05-21 14:01:50,496 8038 INFO ? odoo.modules.loading: init db\n"
+  },
+  {
+    "asctime": "2017-05-21 14:01:50,637",
+    "pid": "8038",
+    "levelname": "ERROR",
+    "dbname": "?",
+    "logger": "odoo.modules.registry",
+    "message": "Failed to load registry\nTraceback (most recent call last):\n...\nOSError: [Errno 2] No such file or directory: '/home/nobody/odoo-10.0/addons'",
+    "raw": "2017-05-21 14:01:50,637 8038 ERROR ? odoo.modules.registry: Failed to load registry\nTraceback (most recent call last):\n  ...\nOSError: [Errno 2] No such file or directory: '/home/nobody/odoo-10.0/addons'\n"
+  },
+  {
+    "asctime": "2017-05-21 14:01:50,637",
+    "pid": "8038",
+    "levelname": "CRITICAL",
+    "dbname": "?",
+    "logger": "odoo.service.server",
+    "message": "Failed to initialize database `odoo-bscw-testsuite-1`.\nTraceback (most recent call last):\n...",
+    "raw": "2017-05-21 14:01:50,637 8038 CRITICAL ? odoo.service.server: Failed to initialize database `odoo-bscw-testsuite-1`.\nTraceback (most recent call last):\n  ...\n"
+  },
+  {
+    "asctime": "2017-05-21 14:01:50,638",
+    "pid": "8038",
+    "levelname": "INFO",
+    "dbname": "?",
+    "logger": "odoo.service.server",
+    "message": "Initiating shutdown",
+    "raw": "2017-05-21 14:01:50,638 8038 INFO ? odoo.service.server: Initiating shutdown\n"
+  },
+  {
+    "asctime": "2017-05-21 14:01:50,638",
+    "pid": "8038",
+    "levelname": "INFO",
+    "dbname": "?",
+    "logger": "odoo.service.server",
+    "message": "Hit CTRL-C again or send a second signal to force the shutdown.",
+    "raw": "2017-05-21 14:01:50,638 8038 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown.\n"
+  }
+]

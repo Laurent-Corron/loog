@@ -3,7 +3,7 @@
 import json
 import os
 
-from loog import parse_stream
+from loog import enrich_werkzeug, parse_stream
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
@@ -32,3 +32,12 @@ def test_parsing_irregular_lines():
         assert 1 == len(result[0])
         # checks that the Traceback message was added to the previous line's message
         assert "Traceback" in result[5]["message"]
+
+
+def test_werkzeug():
+    path = os.path.join(DATA_DIR, "test_werkzeug.log")
+    with open(path) as file:
+        result = list(enrich_werkzeug(parse_stream(file)))
+    with open(os.path.join(DATA_DIR, "test_werkzeug_expected.json")) as expected_file:
+        expected = json.load(expected_file)
+    assert expected == result

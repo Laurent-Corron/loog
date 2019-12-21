@@ -1,5 +1,5 @@
 import re
-from typing import Iterable, Iterator, Mapping
+from typing import Iterable, Iterator, MutableMapping
 
 ODOO_LOG_RE = re.compile(
     r"^"
@@ -13,13 +13,14 @@ ODOO_LOG_RE = re.compile(
 )
 
 
-def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
+def parse_stream(stream: Iterable[str]) -> Iterator[MutableMapping[str, str]]:
     """Parse a stream of Odoo log lines and return an iterator of log records.
 
     Log records have the following keys:
     - asctime: timestamp
     - pid: process or thread id
     - dbname: database name
+    - logger: python logger name
     - levelname: python logging level name
     - message: the rest of the line
     """
@@ -42,3 +43,29 @@ def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
             else:
                 # irregular lines at the beginning, yield them independently
                 yield {"raw": line}
+    if record:
+        yield record
+
+
+ODOO_WERKZEUG_RE = re.compile(
+    r"^(?P<remote_addr>\S+)"
+    r" .+? .+? \[.*?\]"
+    r" \"(?P<request_method>\S+) (?P<request_uri>\S+) .*?\""
+    r" (?P<status>\S+) \S+"
+    r"( (?P<sql_count>\d+) (?P<sql_time>\d*\.\d+) (?P<python_time>\d*\.\d+))?"
+    r".*$"
+)
+
+
+def enrich_werkzeug(
+    records: Iterable[MutableMapping[str, str]]
+) -> Iterator[MutableMapping[str, str]]:
+    """Enrich werkzeug (http requests) log records"""
+    for record in records:
+        if record.get("logger") == "werkzeug":
+            mo = ODOO_WERKZEUG_RE.match(record["message"])
+            if mo:
+                record.update(
+                    (k, v) for k, v in mo.groupdict().items() if v is not None
+                )
+        yield record
