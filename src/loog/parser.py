@@ -43,6 +43,8 @@ def parse_stream(stream: Iterable[str]) -> Iterator[MutableMapping[str, str]]:
             else:
                 # irregular lines at the beginning, yield them independently
                 yield {"raw": line}
+    if record:
+        yield record
 
 
 ODOO_WERKZEUG_RE = re.compile(
