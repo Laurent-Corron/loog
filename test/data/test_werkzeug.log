@@ -1,4 +1,4 @@
 2019-12-19 08:42:32,135 19627 INFO ? odoo.addons.queue_job.jobrunner.runner: database connections ready
 2019-12-19 08:42:32,892 19649 INFO odoo13-dev werkzeug: 127.0.0.1 - - [19/Dec/2019 08:42:32] "GET /web/static/lib/bootstrap/scss/web.assets_common/_functions.scss.css HTTP/1.1" 304 - 3 0.002 0.006
 2019-12-19 08:42:35,044 19647 INFO odoo13-dev werkzeug: 127.0.0.1 - - [19/Dec/2019 08:42:35] "POST /web/dataset/call_kw/res.users/systray_get_activities HTTP/1.1" 200 -
-2019-12-19 08:42:35,044 19647 INFO odoo13-dev werkzeug: 127.0.0.1 - - [19/Dec/2019 08:42:35] "POST /web/dataset/call_kw/res.users/systray_get_activities HTTP/1.1" 200 - 19 0.018 0.025
+2019-12-19 08:42:35,044 19647 INFO odoo13-dev werkzeug: 127.0.0.1 - - [19/Dec/2019 08:42:35] "POST /web/dataset/call_kw/res.users/systray_get_activities HTTP/1.1" 200 - 19 0.018 0.025 - More
