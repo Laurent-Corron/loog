@@ -52,7 +52,11 @@ ODOO_WERKZEUG_RE = re.compile(
     r" .+? .+? \[.*?\]"
     r" \"(?P<request_method>\S+) (?P<request_uri>\S+) .*?\""
     r" (?P<status>\S+) \S+"
-    r"( (?P<sql_count>\d+) (?P<sql_time>\d*\.\d+) (?P<python_time>\d*\.\d+))?"
+    r"( (?P<perf_info>"
+    r"(?P<sql_count>\d+) "
+    r"(?P<sql_time>\d*\.\d+) "
+    r"(?P<python_time>\d*\.\d+)"
+    r"))?"
     r".*$"
 )
 
