@@ -55,7 +55,7 @@ ODOO_WERKZEUG_RE = re.compile(
     r"( (?P<perf_info>"
     r"(?P<sql_count>\d+) "
     r"(?P<sql_time>\d*\.\d+) "
-    r"(?P<python_time>\d*\.\d+)"
+    r"(?P<other_time>\d*\.\d+)"
     r"))?"
     r".*$"
 )
