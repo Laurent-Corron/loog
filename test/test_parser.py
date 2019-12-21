@@ -37,17 +37,7 @@ def test_parsing_irregular_lines():
 def test_werkzeug():
     path = os.path.join(DATA_DIR, "test_werkzeug.log")
     with open(path) as file:
-        resultParse = list(parse_stream(file))
-        # print(resultParse)
-        result = list(enrich_werkzeug(resultParse))
-        with open(
-            os.path.join(DATA_DIR, "test_werkzeug_expected.json")
-        ) as expected_file:
-            expected = json.load(expected_file)
-        assert expected == result[1]
-
-        # result[2] is using oddoo 11's format
-        # (without sql_count, sql_time and python_time) so checking its value
-        assert "sql_count" not in result[2]
-        assert "sql_time" not in result[2]
-        assert "python_time" not in result[2]
+        result = list(enrich_werkzeug(parse_stream(file)))
+    with open(os.path.join(DATA_DIR, "test_werkzeug_expected.json")) as expected_file:
+        expected = json.load(expected_file)
+    assert expected == result
