@@ -1,5 +1,5 @@
 import re
-from typing import Iterable, Iterator, Mapping
+from typing import Iterable, Iterator, MutableMapping
 
 ODOO_LOG_RE = re.compile(
     r"^"
@@ -13,7 +13,7 @@ ODOO_LOG_RE = re.compile(
 )
 
 
-def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
+def parse_stream(stream: Iterable[str]) -> Iterator[MutableMapping[str, str]]:
     """Parse a stream of Odoo log lines and return an iterator of log records.
 
     Log records have the following keys:
@@ -56,8 +56,8 @@ ODOO_WERKZEUG_RE = re.compile(
 
 
 def enrich_werkzeug(
-    records: Iterator[Mapping[str, str]]
-) -> Iterator[Mapping[str, str]]:
+    records: Iterable[MutableMapping[str, str]]
+) -> Iterator[MutableMapping[str, str]]:
     """Enrich werkzeug (http requests) log records"""
     for record in records:
         if record.get("logger") == "werkzeug":
