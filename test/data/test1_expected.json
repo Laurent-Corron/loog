@@ -1,6 +1,7 @@
 [
   {
-    "raw": "first line fo the file\n"
+    "raw": "first line fo the file\n",
+    "message": "first line fo the file"
   },
   {
     "asctime": "2017-05-21 14:01:49,686",

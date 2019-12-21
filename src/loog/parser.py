@@ -13,7 +13,9 @@ ODOO_LOG_RE = re.compile(
 )
 
 
-def parse_stream(stream: Iterable[str]) -> Iterator[MutableMapping[str, str]]:
+def parse_stream(
+    stream: Iterable[str], include_raw=False
+) -> Iterator[MutableMapping[str, str]]:
     """Parse a stream of Odoo log lines and return an iterator of log records.
 
     Log records have the following keys:
@@ -32,17 +34,22 @@ def parse_stream(stream: Iterable[str]) -> Iterator[MutableMapping[str, str]]:
             if record:
                 yield record
             record = mo.groupdict()
-            record["raw"] = line
+            if include_raw:
+                record["raw"] = line
         else:
             if record:
                 # irregular line in the middle of the log file: assume
                 # it is a continuation of the current record (a typical
                 # example is a multi-line stack trace)
                 record["message"] += "\n" + line.strip()
-                record["raw"] += line
+                if include_raw:
+                    record["raw"] += line
             else:
                 # irregular lines at the beginning, yield them independently
-                yield {"raw": line}
+                r = {"message": line.strip()}
+                if include_raw:
+                    r["raw"] = line
+                yield r
     if record:
         yield record
 

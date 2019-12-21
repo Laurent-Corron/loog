@@ -17,21 +17,20 @@ def test_empty():
 def test_parsing_file():
     path = os.path.join(DATA_DIR, "test1.log")
     with open(path) as file:
-        result = list(parse_stream(file))
-        with open(os.path.join(DATA_DIR, "test1_expected.json")) as expected_file:
-            expected = json.load(expected_file)
-        assert expected == result
+        result = list(parse_stream(file, include_raw=True))
+    with open(os.path.join(DATA_DIR, "test1_expected.json")) as expected_file:
+        expected = json.load(expected_file)
+    assert expected == result
 
 
-def test_parsing_irregular_lines():
+def test_include_raw():
     path = os.path.join(DATA_DIR, "test1.log")
     with open(path) as file:
-        result = list(parse_stream(file))
-        # checks that the first line is added in the first dict
-        assert "first line fo the file" in result[0]["raw"]
-        assert 1 == len(result[0])
-        # checks that the Traceback message was added to the previous line's message
-        assert "Traceback" in result[5]["message"]
+        assert all("raw" in r for r in parse_stream(file, include_raw=True))
+    with open(path) as file:
+        assert all("raw" not in r for r in parse_stream(file, include_raw=False))
+    with open(path) as file:
+        assert all("raw" not in r for r in parse_stream(file))
 
 
 def test_werkzeug():
