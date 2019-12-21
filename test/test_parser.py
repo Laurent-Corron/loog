@@ -35,13 +35,13 @@ def test_parsing_irregular_lines():
 
 
 def test_werkzeug():
-    path = os.path.join(DATA_DIR, "testWerkzeug.log")
+    path = os.path.join(DATA_DIR, "test_werkzeug.log")
     with open(path) as file:
         resultParse = list(parse_stream(file))
         # print(resultParse)
         result = list(enrich_werkzeug(resultParse))
         with open(
-            os.path.join(DATA_DIR, "testWerkzeug_expected.json")
+            os.path.join(DATA_DIR, "test_werkzeug_expected.json")
         ) as expected_file:
             expected = json.load(expected_file)
         assert expected == result[1]
