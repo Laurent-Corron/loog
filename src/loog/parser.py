@@ -20,6 +20,7 @@ def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
     - asctime: timestamp
     - pid: process or thread id
     - dbname: database name
+    - logger: python logger name
     - levelname: python logging level name
     - message: the rest of the line
     """
@@ -44,14 +45,12 @@ def parse_stream(stream: Iterable[str]) -> Iterator[Mapping[str, str]]:
                 yield {"raw": line}
 
 
-ODOO_werkzeug_RE = re.compile(
-    r"^"
-    r"(?P<ip>\S*)"
-    r".*?] "
-    r"\"(?P<method>\S+) "
-    r"(?P<url>\S*) .*?\" "
-    r"(?P<response>\S*)"
-    r"( - (?P<sql_count>\S+) (?P<sql_time>\S+) (?P<python_time>\S+))?"
+ODOO_WERKZEUG_RE = re.compile(
+    r"^(?P<remote_addr>\S+)"
+    r" .+? .+? \[.*?\]"
+    r" \"(?P<request_method>\S+) (?P<request_uri>\S+) .*?\""
+    r" (?P<status>\S+) \S+"
+    r"( (?P<sql_count>\d+) (?P<sql_time>\d*\.\d+) (?P<python_time>\d*\.\d+))?"
     r".*$"
 )
 
@@ -62,7 +61,7 @@ def enrich_werkzeug(
     """Enrich werkzeug (http requests) log records"""
     for record in records:
         if record.get("logger") == "werkzeug":
-            mo = ODOO_werkzeug_RE.match(record["message"])
+            mo = ODOO_WERKZEUG_RE.match(record["message"])
             if mo:
                 record["werkzeug"] = {
                     k: v for k, v in mo.groupdict().items() if v is not None
