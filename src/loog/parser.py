@@ -80,3 +80,9 @@ def enrich_werkzeug(
                     (k, v) for k, v in mo.groupdict().items() if v is not None
                 )
         yield record
+
+
+def enrich(
+    records: Iterable[MutableMapping[str, str]]
+) -> Iterator[MutableMapping[str, str]]:
+    return enrich_werkzeug(records)
