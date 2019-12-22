@@ -78,7 +78,7 @@ def enrich_werkzeug(
     """Enrich werkzeug (http requests) log records"""
     for record in records:
         if record.get("logger") == "werkzeug":
-            mo = ODOO_WERKZEUG_RE.match(record["message"])
+            mo = ODOO_WERKZEUG_RE.match(record.get("message", ""))
             if mo:
                 record.update(
                     (k, v) for k, v in mo.groupdict().items() if v is not None
