@@ -11,7 +11,7 @@ setup(
     packages=find_packages(where="src"),
     use_scm_version=True,
     include_package_data=True,
-    install_requires=["click"],
+    install_requires=["click", 'importlib_metadata ; python_version<"3.8"'],
     license="mit",
     classifiers=[
         "Development Status :: 3 - Alpha",
