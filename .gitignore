@@ -69,3 +69,6 @@ target/
 # pycharm dev env
 .idea/
 .ropeproject/
+
+# mypy
+.mypy_cache

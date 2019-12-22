@@ -14,7 +14,7 @@ ODOO_LOG_RE = re.compile(
 
 
 def parse_stream(
-    stream: Iterable[str], include_raw=False
+    stream: Iterable[str], include_raw: bool = False
 ) -> Iterator[MutableMapping[str, str]]:
     """Parse a stream of Odoo log lines and return an iterator of log records.
 

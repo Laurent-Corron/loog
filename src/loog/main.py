@@ -18,6 +18,5 @@ Copyright 2019 ACSONE SA/NV (<https://acsone.eu/>)"""
 
 @click.group()
 @click.version_option(version=__version__, message=__notice__)
-@click.pass_context
-def main(ctx):
+def main() -> None:
     print()
