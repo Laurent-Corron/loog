@@ -12,7 +12,7 @@ Enrichment features include:
 - detect `werkzeug` records for HTTP requests and add HTTP status, URI,
   performance information
 
-`loog` has a plublic API so it's feature are readily available for you to
+`loog` has a public API so it's feature are readily available for you to
 develop custom Odoo log processing pipelines.
 
 ## Development
@@ -27,7 +27,7 @@ $ env/bin/pip install -e .
 
 This project uses black, isort, flake8 and other tools for code formating and
 linting. To ensure your contributions follow the conventions, install
-`pre-commit <https://pre-commit.com/>`_, then run `pre-commit install` in the
+[pre-commit](<https://pre-commit.com/>), then run `pre-commit install` in the
 directory where you cloned the project.
 
 ## Running the tests
