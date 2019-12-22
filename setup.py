@@ -22,5 +22,6 @@ setup(
     ],
     package_dir={"": "src"},
     python_requires=">=3.6",
+    setup_requires=["setuptools_scm"],
     entry_points={"console_scripts": ["loog=loog.main:main"]},
 )
