@@ -1,6 +1,9 @@
 import re
 from typing import Iterable, Iterator, MutableMapping
 
+# from tartley/colorama
+ANSI_CSI_RE = re.compile("\001?\033\\[((?:\\d|;)*)([a-zA-Z])\002?")
+
 ODOO_LOG_RE = re.compile(
     r"^"
     r"(?P<asctime>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) "
@@ -28,6 +31,7 @@ def parse_stream(
     """
     record = None
     for line in stream:
+        line = ANSI_CSI_RE.sub("", line)
         mo = ODOO_LOG_RE.match(line)
         if mo:
             # we got a match, yield previous record and create a new one

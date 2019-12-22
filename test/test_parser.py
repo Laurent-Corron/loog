@@ -23,6 +23,15 @@ def test_parsing_file():
     assert expected == result
 
 
+def test_ansi():
+    path = os.path.join(DATA_DIR, "test_ansi.log")
+    with open(path) as file:
+        result = list(parse_stream(file, include_raw=False))
+    with open(os.path.join(DATA_DIR, "test_ansi_expected.json")) as expected_file:
+        expected = json.load(expected_file)
+    assert expected == result
+
+
 def test_include_raw():
     path = os.path.join(DATA_DIR, "test1.log")
     with open(path) as file:

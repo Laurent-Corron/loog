@@ -1,0 +1,18 @@
+[
+  {
+    "asctime": "2019-12-22 11:52:20,441",
+    "pid": "7214",
+    "levelname": "INFO",
+    "dbname": "?",
+    "logger": "odoo",
+    "message": "Odoo version 12.0"
+  },
+  {
+    "asctime": "2019-12-22 11:52:20,626",
+    "pid": "7214",
+    "levelname": "WARNING",
+    "dbname": "?",
+    "logger": "odoo.addons.base.models.res_currency",
+    "message": "The num2words python library is not installed, amount-to-text features won't be fully available.\nException in thread odoo.service.httpd:\nTraceback (most recent call last):\nFile \"/usr/lib/python3.7/threading.py\", line 926, in _bootstrap_inner\nself.run()"
+  }
+]

@@ -1,0 +1,6 @@
+2019-12-22 11:52:20,441 7214 [1;32m[1;49mINFO[0m ? odoo: Odoo version 12.0
+2019-12-22 11:52:20,626 7214 [1;33m[1;49mWARNING[0m ? odoo.addons.base.models.res_currency: The num2words python library is not installed, amount-to-text features won't be fully available.
+Exception in thread odoo.service.httpd:
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
