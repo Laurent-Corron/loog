@@ -3,7 +3,7 @@
 import json
 import os
 
-from loog import enrich_werkzeug, parse_stream
+from loog import enrich_errors, enrich_werkzeug, parse_stream
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
@@ -47,5 +47,14 @@ def test_werkzeug():
     with open(path) as file:
         result = list(enrich_werkzeug(parse_stream(file)))
     with open(os.path.join(DATA_DIR, "test_werkzeug_expected.json")) as expected_file:
+        expected = json.load(expected_file)
+    assert expected == result
+
+
+def test_enrich_errors():
+    path = os.path.join(DATA_DIR, "test_error.log")
+    with open(path) as file:
+        result = list(enrich_errors(parse_stream(file), regexes_to_ignore="ERROR"))
+    with open(os.path.join(DATA_DIR, "test_error_expected.json")) as expected_file:
         expected = json.load(expected_file)
     assert expected == result

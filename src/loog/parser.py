@@ -86,6 +86,29 @@ def enrich_werkzeug(
         yield record
 
 
+def enrich_errors(
+    records: Iterable[MutableMapping[str, str]], regexes_to_ignore: Iterable[str] = None
+) -> Iterator[MutableMapping[str, str]]:
+    """
+    Add an `error: true` flag to WARNING, ERROR, CRITICAL records.
+    Add an `error_ignored: true` flag if the message had an error log level, and matched
+    one of the `ignore_regexes`
+    """
+    ignore_regexes = [re.compile(i, re.MULTILINE) for i in regexes_to_ignore]
+    for record in records:
+        if record.get("levelname") in ["WARNING", "ERROR", "CRITICAL"]:
+            record["error"] = True
+            if ignore_regexes:
+                record["error_ignored"] = False
+                for ignore_regex in ignore_regexes:
+                    if ignore_regex.match(record["message"]):
+                        record["error_ignored"] = True
+                        break
+        else:
+            record["error"] = False
+        yield record
+
+
 def enrich(
     records: Iterable[MutableMapping[str, str]]
 ) -> Iterator[MutableMapping[str, str]]:
