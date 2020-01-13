@@ -24,7 +24,12 @@ Copyright 2019 ACSONE SA/NV (<https://acsone.eu/>)"""
 
 @click.group()
 @click.version_option(version=__version__, message=__notice__)
-def main() -> None:
+def main():
+    pass
+
+
+@click.command()
+def parse() -> None:
     for record in enrich(parse_stream(sys.stdin)):
         json.dump(record, sys.stdout)
         sys.stdout.write("\n")
@@ -44,4 +49,5 @@ def check(ignore):
         sys.stdout.write("\n")
 
 
+main.add_command(parse)
 main.add_command(check)
