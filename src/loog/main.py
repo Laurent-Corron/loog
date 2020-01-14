@@ -43,10 +43,23 @@ def parse() -> None:
     multiple=True,
     help="Regular expression for message to ignore (can be repeated).",
 )
-def check(ignore):
-    for record in enrich_errors(parse_stream(sys.stdin), regexes_to_ignore=ignore):
-        json.dump(record, sys.stdout)
-        sys.stdout.write("\n")
+@click.option(
+    "--human-readable",
+    "-h",
+    is_flag=True,
+    help="shows a clear list of errors that weren't ignored by -i",
+)
+def check(ignore, human_readable):
+    for record in enrich_errors(
+        parse_stream(sys.stdin, include_raw=True), regexes_to_ignore=ignore
+    ):
+        if record["error"]:
+            if human_readable:
+                click.echo(record["raw"])
+                sys.stdout.write("\n")
+            else:
+                json.dump(record, sys.stdout)
+                sys.stdout.write("\n")
 
 
 main.add_command(parse)
