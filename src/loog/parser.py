@@ -1,5 +1,6 @@
 import re
 from typing import Iterable, Iterator, MutableMapping
+from urllib.parse import urlparse
 
 # from tartley/colorama
 ANSI_CSI_RE = re.compile("\001?\033\\[((?:\\d|;)*)([a-zA-Z])\002?")
@@ -91,6 +92,7 @@ def enrich_werkzeug(
                 record.update(
                     (k, v) for k, v in mo.groupdict().items() if v is not None
                 )
+                record["request_path"] = urlparse(record["request_uri"]).path
                 _convert_field(record, "sql_count", int)
                 _convert_field(record, "sql_time", float)
                 _convert_field(record, "other_time", float)
