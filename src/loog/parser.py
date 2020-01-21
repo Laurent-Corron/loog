@@ -72,6 +72,14 @@ ODOO_WERKZEUG_RE = re.compile(
 )
 
 
+def _convert_field(d, k, converter):
+    if k in d:
+        try:
+            d[k] = converter(d[k])
+        except Exception:
+            del d[k]
+
+
 def enrich_werkzeug(
     records: Iterable[MutableMapping[str, str]]
 ) -> Iterator[MutableMapping[str, str]]:
@@ -83,6 +91,9 @@ def enrich_werkzeug(
                 record.update(
                     (k, v) for k, v in mo.groupdict().items() if v is not None
                 )
+                _convert_field(record, "sql_count", int)
+                _convert_field(record, "sql_time", float)
+                _convert_field(record, "other_time", float)
         yield record
 
 

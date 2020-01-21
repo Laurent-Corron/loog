@@ -19,9 +19,9 @@
     "request_uri": "/web/static/lib/bootstrap/scss/web.assets_common/_functions.scss.css",
     "status": "304",
     "perf_info": "3 0.002 0.006",
-    "sql_count": "3",
-    "sql_time": "0.002",
-    "other_time": "0.006"
+    "sql_count": 3,
+    "sql_time": 0.002,
+    "other_time": 0.006
   },
   {
     "asctime": "2019-12-19 08:42:35,044",
@@ -47,8 +47,8 @@
     "request_uri": "/web/dataset/call_kw/res.users/systray_get_activities",
     "status": "200",
     "perf_info": "19 0.018 0.025",
-    "sql_count": "19",
-    "sql_time": "0.018",
-    "other_time": "0.025"
+    "sql_count": 19,
+    "sql_time": 0.018,
+    "other_time": 0.025
   }
 ]
