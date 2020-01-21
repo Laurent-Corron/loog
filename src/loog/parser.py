@@ -94,6 +94,8 @@ def enrich_werkzeug(
                 _convert_field(record, "sql_count", int)
                 _convert_field(record, "sql_time", float)
                 _convert_field(record, "other_time", float)
+                if "sql_time" in record and "other_time" in record:
+                    record["total_time"] = record["sql_time"] + record["other_time"]
         yield record
 
 
