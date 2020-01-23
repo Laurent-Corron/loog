@@ -2,11 +2,13 @@
 
 from setuptools import find_packages, setup
 
+with open("README.rst") as f:
+    long_description = f.read()
+
 setup(
     name="loog",
     description="An Odoo log parsing and enrichment library and CLI.",
-    long_description="\n".join(open("README.md").read()),
-    long_description_content_type="text/markdown",
+    long_description=long_description,
     url="https://github.com/acsone/loog",
     packages=find_packages(where="src"),
     use_scm_version=True,
