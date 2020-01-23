@@ -17,6 +17,7 @@
     "remote_addr": "127.0.0.1",
     "request_method": "GET",
     "request_uri": "/web/static/lib/bootstrap/scss/web.assets_common/_functions.scss.css",
+    "request_path": "/web/static/lib/bootstrap/scss/web.assets_common/_functions.scss.css",
     "status": "304",
     "perf_info": "3 0.002 0.006",
     "sql_count": 3,
@@ -34,6 +35,7 @@
     "remote_addr": "127.0.0.1",
     "request_method": "POST",
     "request_uri": "/web/dataset/call_kw/res.users/systray_get_activities",
+    "request_path": "/web/dataset/call_kw/res.users/systray_get_activities",
     "status": "200"
   },
   {
@@ -46,11 +48,25 @@
     "remote_addr": "127.0.0.1",
     "request_method": "POST",
     "request_uri": "/web/dataset/call_kw/res.users/systray_get_activities",
+    "request_path": "/web/dataset/call_kw/res.users/systray_get_activities",
     "status": "200",
     "perf_info": "19 0.018 0.025",
     "sql_count": 19,
     "sql_time": 0.018,
     "other_time": 0.025,
     "total_time": 0.043
+  },
+  {
+    "asctime": "2019-12-19 08:42:35,044",
+    "pid": "19647",
+    "levelname": "INFO",
+    "dbname": "odoo13-dev",
+    "logger": "werkzeug",
+    "message": "127.0.0.1 - - [19/Dec/2019 08:42:35] \"POST /run_job?job_id=xyz HTTP/1.1\" 200 -",
+    "remote_addr": "127.0.0.1",
+    "request_method": "POST",
+    "request_uri": "/run_job?job_id=xyz",
+    "request_path": "/run_job",
+    "status": "200"
   }
 ]
