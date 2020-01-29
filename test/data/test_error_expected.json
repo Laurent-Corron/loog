@@ -1,7 +1,8 @@
 [
   {
     "message": "first line fo the file",
-    "error": false
+    "error": false,
+    "raw": "first line fo the file\n"
   },
   {
     "asctime": "2017-05-21 14:01:49,686",
@@ -10,7 +11,8 @@
     "dbname": "?",
     "logger": "odoo",
     "message": "Odoo version 10.0",
-    "error": false
+    "error": false,
+    "raw": "2017-05-21 14:01:49,686 8038 INFO ? odoo: Odoo version 10.0\n"
   },
   {
     "asctime": "2017-05-21 14:01:49,687",
@@ -19,7 +21,8 @@
     "dbname": "?",
     "logger": "odoo",
     "message": "addons paths: [u'/home/nobody/odoo-10.0/addons', u'/home/nobody/odoo/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mail-environment/setup/mail_environment/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder/setup/mis_builder/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder-operating-unit/setup/mis_builder_operating_unit/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-server-environment-ir-config-parameter/setup/server_environment_ir_config_parameter/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/local/lib/python2.7/site-packages/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/lib/python2.7/site-packages/odoo/addons', '/home/nobody/odoo/src/odoo/odoo/addons']",
-    "error": false
+    "error": false,
+    "raw": "2017-05-21 14:01:49,687 8038 INFO ? odoo: addons paths: [u'/home/nobody/odoo-10.0/addons', u'/home/nobody/odoo/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mail-environment/setup/mail_environment/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder/setup/mis_builder/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-mis-builder-operating-unit/setup/mis_builder_operating_unit/odoo/addons', u'/home/nobody/odoo/src/odoo10-addon-server-environment-ir-config-parameter/setup/server_environment_ir_config_parameter/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/local/lib/python2.7/site-packages/odoo/addons', u'/home/nobody/.virtualenvs/odoo-bscw/lib/python2.7/site-packages/odoo/addons', '/home/nobody/odoo/src/odoo/odoo/addons']\n"
   },
   {
     "asctime": "2017-05-21 14:01:49,687",
@@ -28,7 +31,8 @@
     "dbname": "?",
     "logger": "odoo",
     "message": "database: default@default:default",
-    "error": false
+    "error": false,
+    "raw": "2017-05-21 14:01:49,687 8038 INFO ? odoo: database: default@default:default\n"
   },
   {
     "asctime": "2017-05-21 14:01:50,496",
@@ -37,7 +41,8 @@
     "dbname": "?",
     "logger": "odoo.modules.loading",
     "message": "init db",
-    "error": false
+    "error": false,
+    "raw": "2017-05-21 14:01:50,496 8038 INFO ? odoo.modules.loading: init db\n"
   },
   {
     "asctime": "2017-05-21 14:01:50,637",
@@ -47,7 +52,8 @@
     "logger": "odoo.modules.registry",
     "message": "Failed to load registry\nTraceback (most recent call last):\n...\nOSError: [Errno 2] No such file or directory: '/home/nobody/odoo-10.0/addons'",
     "error": true,
-    "error_ignored": false
+    "error_ignored": false,
+    "raw": "2017-05-21 14:01:50,637 8038 ERROR ? odoo.modules.registry: Failed to load registry\nTraceback (most recent call last):\n  ...\nOSError: [Errno 2] No such file or directory: '/home/nobody/odoo-10.0/addons'\n"
   },
   {
     "asctime": "2017-05-21 14:01:50,637",
@@ -57,7 +63,8 @@
     "logger": "odoo.service.server",
     "message": "Failed to initialize database `odoo-bscw-testsuite-1`.\nTraceback (most recent call last):\n...",
     "error": true,
-    "error_ignored": false
+    "error_ignored": false,
+    "raw": "2017-05-21 14:01:50,637 8038 CRITICAL ? odoo.service.server: Failed to initialize database `odoo-bscw-testsuite-1`.\nTraceback (most recent call last):\n  ...\n"
   },
   {
     "asctime": "2017-05-21 14:01:50,639",
@@ -65,9 +72,10 @@
     "levelname": "WARNING",
     "dbname": "?",
     "logger": "odoo.addons.base.models.res_currency",
-    "message": "The num2words python library is not installed, amount-to-text features won't be fully available.\nException in thread odoo.service.httpd:\nTraceback (most recent call last):\nFile \"/usr/lib/python3.7/threading.py\", line 926, in _bootstrap_inner\nself.run()\n...",
+    "message": "The num2words python library is not installed, amount-to-text features wont be fully available.\nException in thread odoo.service.httpd:\nTraceback (most recent call last):\nFile \"/usr/lib/python3.7/threading.py\", line 926, in _bootstrap_inner\nself.run()\n...",
     "error": true,
-    "error_ignored": false
+    "error_ignored": false,
+    "raw": "2017-05-21 14:01:50,639 8038 WARNING ? odoo.addons.base.models.res_currency: The num2words python library is not installed, amount-to-text features wont be fully available.\nException in thread odoo.service.httpd:\nTraceback (most recent call last):\n  File \"/usr/lib/python3.7/threading.py\", line 926, in _bootstrap_inner\n    self.run()\n    ...\n"
   },
   {
     "asctime": "2017-05-21 14:01:50,638",
@@ -76,7 +84,8 @@
     "dbname": "?",
     "logger": "odoo.service.server",
     "message": "Initiating shutdown",
-    "error": false
+    "error": false,
+    "raw": "2017-05-21 14:01:50,638 8038 INFO ? odoo.service.server: Initiating shutdown\n"
   },
   {
     "asctime": "2017-05-21 14:01:50,638",
@@ -85,6 +94,7 @@
     "dbname": "?",
     "logger": "odoo.service.server",
     "message": "Hit CTRL-C again or send a second signal to force the shutdown.",
-    "error": false
+    "error": false,
+    "raw": "2017-05-21 14:01:50,638 8038 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown.\n"
   }
 ]

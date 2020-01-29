@@ -54,7 +54,7 @@ def test_werkzeug():
 def test_enrich_errors():
     path = os.path.join(DATA_DIR, "test_error.log")
     with open(path) as file:
-        result = list(enrich_errors(parse_stream(file)))
+        result = list(enrich_errors(parse_stream(file, include_raw=True)))
     with open(os.path.join(DATA_DIR, "test_error_expected.json")) as expected_file:
         expected = json.load(expected_file)
     assert expected == result
@@ -66,7 +66,7 @@ def test_ignore_enrich_errors():
     with open(path) as file:
         result = list(
             enrich_errors(
-                parse_stream(file),
+                parse_stream(file, include_raw=True),
                 regexes_to_ignore=[".*not installed.*", ".*Failed.*"],
             )
         )

@@ -10,7 +10,7 @@ OSError: [Errno 2] No such file or directory: '/home/nobody/odoo-10.0/addons'
 2017-05-21 14:01:50,637 8038 CRITICAL ? odoo.service.server: Failed to initialize database `odoo-bscw-testsuite-1`.
 Traceback (most recent call last):
   ...
-2017-05-21 14:01:50,639 8038 WARNING ? odoo.addons.base.models.res_currency: The num2words python library is not installed, amount-to-text features won't be fully available.
+2017-05-21 14:01:50,639 8038 WARNING ? odoo.addons.base.models.res_currency: The num2words python library is not installed, amount-to-text features wont be fully available.
 Exception in thread odoo.service.httpd:
 Traceback (most recent call last):
   File "/usr/lib/python3.7/threading.py", line 926, in _bootstrap_inner

@@ -49,17 +49,24 @@ def parse() -> None:
     is_flag=True,
     help="shows a clear list of errors that weren't ignored by -i",
 )
-def check(ignore, human_readable):
+@click.option(
+    "--err-if-err",
+    "-e",
+    is_flag=True,
+    help="Exit with an error code if an error in the log records is found (default).",
+)
+def check(ignore, human_readable, err_if_err):
     for record in enrich_errors(
         parse_stream(sys.stdin, include_raw=True), regexes_to_ignore=ignore
     ):
         if record["error"]:
             if human_readable:
                 click.echo(record["raw"])
-                sys.stdout.write("\n")
             else:
                 json.dump(record, sys.stdout)
-                sys.stdout.write("\n")
+            sys.stdout.write("\n")
+            if err_if_err and not record["error_ignored"]:
+                raise click.ClickException("an error was found")
 
 
 main.add_command(parse)

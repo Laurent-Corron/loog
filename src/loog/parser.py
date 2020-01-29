@@ -94,16 +94,15 @@ def enrich_errors(
     Add an `error_ignored: true` flag if the message had an error log level, and matched
     one of the `ignore_regexes`
     """
+    if regexes_to_ignore:
+        ignore_regexes = [re.compile(i, re.MULTILINE) for i in regexes_to_ignore]
     for record in records:
         if record.get("levelname") in ["WARNING", "ERROR", "CRITICAL"]:
             record["error"] = True
             record["error_ignored"] = False
             if regexes_to_ignore:
-                ignore_regexes = [
-                    re.compile(i, re.MULTILINE) for i in regexes_to_ignore
-                ]
                 for ignore_regex in ignore_regexes:
-                    if ignore_regex.match(record["message"]):
+                    if ignore_regex.match(record["raw"]):
                         record["error_ignored"] = True
                         break
         else:
