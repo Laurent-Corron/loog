@@ -5,6 +5,7 @@ import sys
 
 import click
 
+from .config import LoogConfig
 from .parser import enrich, enrich_errors, parse_stream
 
 try:
@@ -24,8 +25,17 @@ Copyright 2019 ACSONE SA/NV (<https://acsone.eu/>)"""
 
 @click.group()
 @click.version_option(version=__version__, message=__notice__)
-def main():
-    pass
+@click.option(
+    "-c",
+    "--config",
+    type=click.Path(dir_okay=False, exists=True),
+    help="Configuration file (default: ./loog.cfg).",
+)
+@click.pass_context
+def main(ctx, config):
+    config = LoogConfig(config)
+
+    ctx.obj = dict(config=config)
 
 
 @click.command()
